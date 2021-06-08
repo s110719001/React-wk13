@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useState } from "react";
 import { Button, notification } from "antd"
 import { StoreContext } from "../store"
-import { cartItemAdd, CartItemAdd, onChangeC } from "../actions";
+import { cartItemAdd, CartItemAdd } from "../actions";
 import { ADD_CART_ITEM } from "../utils/constants";
 import Cookie from "js-cookie";
 
@@ -24,7 +24,6 @@ export default function AddToCart({ product }) {
 
   const addToCart = () => {
     openNotification();
-    onChangeC(dispatch);
     CartItemAdd(dispatch,product);
     //cartItemAdd(dispatch, product, qty);
   };

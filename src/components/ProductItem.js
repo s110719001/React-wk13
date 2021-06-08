@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
-import { Card, Button } from "antd";
-import Cart from "../pages/Cart";
+import { Card } from "antd";
 import AddToCart from "./AddToCart";
+import { StoreContext } from "../store"
+import { setProductDetail } from "../actions";
 
-const { Meta } = Card;
-
-export default function ProductItem({product}){
-
-    
-
+export default function ProductItem({ product }){
+    const { dispatch } = useContext(StoreContext);
     return(
-            <Link className="card" to={`/product/${product.id}`}>
+            <Link className="card" 
+                    onClick={() => {setProductDetail(dispatch, product.id, 1);}} 
+                    to={`/product/${product.id}`}>
                 <Card 
                 hoverable
                 className="productlist-card bg-card"

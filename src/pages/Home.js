@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Layout, Button } from "antd";
 import { Link } from "react-router-dom";
 import { StoreContext } from "../store/index";
@@ -8,11 +8,16 @@ import WeeklyBlock from "../components/WeeklyBlock";
 import AppFooter from "../components/Footer";
 import AppHeader from "../components/Header";
 
+import { setPage } from "../actions";
+
 const { Header, Content, Footer } = Layout;
 
 export default function Home(){
-    const { state:{ page:{ products }} } = useContext(StoreContext);
-
+    const { state:{ page:{ products }}, dispatch } = useContext(StoreContext);
+    useEffect(() => {
+        const url = window.location.pathname;
+        setPage(dispatch, url)
+      }, []);
     return(
         <Layout className="container">
             <Header className="layout-header">
