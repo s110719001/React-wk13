@@ -3,10 +3,12 @@ import product from "../json/products.json";
 import { 
     ADD_CART_ITEM,
     REMOVE_CART_ITEM,
+
     //Feed 資料到後端
     BEGIN_PRODUCTS_FEED,
     SUCCESS_PRODUCTS_FEED,
     FAIL_PRODUCTS_FEED,
+
     //取得商品渲染畫面
     SET_PAGE_TITLE,
     SET_PAGE_CONTENT,
@@ -14,20 +16,41 @@ import {
     BEGIN_PRODUCTS_REQUEST,
     SUCCESS_PRODUCTS_REQUEST,
     FAIL_PRODUCTS_REQUEST,
+
      //登入
     BEGIN_LOGIN_REQUEST,
     SUCCESS_LOGIN_REQUEST,
     FAIL_LOGIN_REQUEST,
     LOGOUT_REQUEST,
     REMEMBER_LOGIN,
+
     //註冊
     BEGIN_REGISTER_REQUEST,
     SUCCESS_REGISTER_REQUEST,
     FAIL_REGISTER_REQUEST,
+
     //使用者資料
     BEGIN_UPDATE_USERINFO,
     SUCCESS_UPDATE_USERINFO,
-    FAIL_UPDATE_USERINFO
+    FAIL_UPDATE_USERINFO,
+
+      //付款地址與方式
+    SAVE_SHIPPING_ADDRESS,
+    SAVE_PAYMENT_METHOD,
+
+    //訂單建立
+    BEGIN_ORDER_CREATE,
+    SUCCESS_ORDER_CREATE,
+    FAIL_ORDER_CREATE,
+    RESET_ORDER,
+    BEGIN_ORDER_DETAIL,
+    SUCCESS_ORDER_DETAIL,
+    FAIL_ORDER_DETAIL,
+
+    //查詢訂單
+    SEARCH_USER_ORDERS,
+    SUCCESS_SEARCH,
+    FAIL_SEARCH,
 } from "../utils/constants";
 
 import {
@@ -39,6 +62,9 @@ import {
   checkLoginApi,
   getProductById,
   getProducts,
+  createOrderApi,
+  getOrderById,
+  getOrderByUser,
 } from "../api";
 
 export const CartItemAdd = ( dispatch, product ) =>{
@@ -72,11 +98,11 @@ export const feedJSONToFirebase = async (dispatch) => {
   }
 }
 //取得商品資料
-export const setProductDetail = async (dispatch, productId, qty) => {
+export const setProductDetail = async (dispatch, productId, avaliable) => {
   dispatch({ type: BEGIN_PRODUCTS_REQUEST });
   try {
     const product = await getProductById(productId);
-    if (qty === 0)
+    if (avaliable === 0)
       dispatch({
         type: SET_PRODUCT_DETAIL,
         payload: {
@@ -88,7 +114,7 @@ export const setProductDetail = async (dispatch, productId, qty) => {
         type: SET_PRODUCT_DETAIL,
         payload: {
           product,
-          qty,
+          avaliable,
         }
       })
     dispatch({ type: SUCCESS_PRODUCTS_REQUEST });
@@ -191,4 +217,86 @@ export const checkLogin = (dispatch) => {
     dispatch({ type: LOGOUT_REQUEST });    
   }
   return isLogin;
+};
+
+//Order
+export const createOrder = async (dispatch, cart) => {
+  dispatch({ type: BEGIN_ORDER_CREATE });
+  try {
+    const item = {
+      orderItems: cart.cartItems,
+      shippingAddress: cart.shippingAddress,
+      paymentMethod: cart.paymentMethod,
+      itemsPrice: cart.itemsPrice,
+      shippingPrice: cart.shippingPrice,
+      taxPrice: cart.taxPrice,
+      totalPrice: cart.totalPrice,
+    };    
+    const orderInfo = await createOrderApi(item);
+    dispatch({ 
+      type: SUCCESS_ORDER_CREATE, 
+      payload: orderInfo 
+    });
+    localStorage.setItem('orderInfo', JSON.stringify(orderInfo));
+    localStorage.removeItem("cartItems");
+    return orderInfo;
+  } catch (error) {
+    console.log(error);
+    dispatch({ type: FAIL_ORDER_CREATE, payload: error });
+    return null;
+  }  
+};
+
+
+
+export const requestOrderDetail = async (dispatch, orderId) => {
+  dispatch({ type: BEGIN_ORDER_DETAIL });
+  try {
+    const order = await getOrderById(orderId);
+    dispatch({ 
+      type: SUCCESS_ORDER_DETAIL,
+      payload: order
+    });
+  } catch (error) {
+    dispatch({ 
+      type: FAIL_ORDER_DETAIL, 
+      payload: error 
+    });
+  }
+}
+
+export const resetOrder = (dispatch) => {
+  dispatch({ type: RESET_ORDER });
+}
+
+export const getUserOrders = async (dispatch) => {
+  dispatch({ type: SEARCH_USER_ORDERS });
+  try {
+    const orders = await getOrderByUser();
+    dispatch({ 
+      type: SUCCESS_SEARCH,
+      payload: orders
+    });
+  }catch (error) {
+    dispatch({ 
+      type: FAIL_SEARCH, 
+      payload: error 
+    });
+  }
+}
+
+//Payment
+export const saveShippingAddress = (dispatch, shippingAddress) => {
+  dispatch({
+    type: SAVE_SHIPPING_ADDRESS,
+    payload: shippingAddress,
+  });
+  localStorage.setItem('shippingAddress', JSON.stringify(shippingAddress));
+}
+
+export const savePaymentMethod = (dispatch, paymentMethod) => {
+  dispatch({
+    type: SAVE_PAYMENT_METHOD,
+    payload: paymentMethod.paymentMethod,
+  });
 }

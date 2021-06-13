@@ -9,7 +9,7 @@ import Feeder from "../components/Feeder";
 const { Header, Content, Footer } = Layout;
 
 function Feed() {
-  const  { dispatch, state:{productDetail:{product,qty}}} = useContext(StoreContext)
+  const  { dispatch, state:{productDetail:{product,avaliable}}} = useContext(StoreContext)
   return (
     <Layout className="container main-layout">
       <Layout className="bg-gray main-area">

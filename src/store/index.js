@@ -1,15 +1,20 @@
-import { createContext, useReducer } from "react";
-import products from "../json/products.json";
+import { createContext } from "react";
+
 import useReducerWithThunk from 'use-reducer-thunk';
 import {
+    SET_PAGE_TITLE,
+    SET_PAGE_CONTENT,
     ADD_CART_ITEM,
     REMOVE_CART_ITEM,
+    //付款地址與方式
+    SAVE_SHIPPING_ADDRESS,
+    SAVE_PAYMENT_METHOD,
     //Feed 資料到後端
+    SET_PRODUCT_DETAIL,
     BEGIN_PRODUCTS_FEED,
     SUCCESS_PRODUCTS_FEED,
     FAIL_PRODUCTS_FEED,
     //取得商品
-    SET_PRODUCT_DETAIL,
     BEGIN_PRODUCTS_REQUEST,
     SUCCESS_PRODUCTS_REQUEST,
     FAIL_PRODUCTS_REQUEST,
@@ -27,13 +32,28 @@ import {
     BEGIN_UPDATE_USERINFO,
     SUCCESS_UPDATE_USERINFO,
     FAIL_UPDATE_USERINFO,
+    //訂單建立
+    BEGIN_ORDER_CREATE,
+    SUCCESS_ORDER_CREATE,
+    FAIL_ORDER_CREATE,
+    RESET_ORDER,
+    BEGIN_ORDER_DETAIL,
+    SUCCESS_ORDER_DETAIL,
+    FAIL_ORDER_DETAIL,
+    //查詢訂單
+    SEARCH_USER_ORDERS,
+    SUCCESS_SEARCH,
+    FAIL_SEARCH,
 } from "../utils/constants";
 
 export const StoreContext = createContext();
-let cartItems = localStorage.getItem("cartItems")
-    ? JSON.parse(localStorage.getItem("cartItems"))
-    : [];
-
+let cartItems;
+try{
+  cartItems = JSON.parse(localStorage.getItem("cartItems"));
+  if (!cartItems) cartItems = [];
+} catch(e) {
+  cartItems = [];
+}
 let shippingAddress;
 try {
   shippingAddress = JSON.parse(localStorage.getItem('shippingAddress'));
@@ -57,25 +77,29 @@ try {
     
 
 const initialState = {
+    allProducts: [],
     page: {
-       products,
+       title: "",
+       products: [],
     },
     productDetail: {
         product: {},
-        qty: 1,
+        avaliable: 1,
       },
     requestProducts: {
       loading: false,
       error: null,
     },
-    navBar: {
-       activeItem: "/",
-    },
-    cartItems: [],
+    cart: {
+        cartItems,
+        shippingAddress,
+        paymentMethod: 'Google',
+      },
     feedProducts: {
         loading: false,
         error: null,
       },
+    //登入註冊
     userSignin: {
       loading: false,
       userInfo,
@@ -87,26 +111,59 @@ const initialState = {
       userInfo: null,
       error: "",
     },
+    //訂單
+    orderInfo: {
+      loading: false,
+      order: orderInfo_order,
+      success: false,
+      error: null,
+    },
+    orderDetail: {
+      loading: true,
+      order: { cartItems: []},
+      error: null,
+    },
+    userOrders: {
+      loading: false,
+      orders: [],
+      error: "",
+    }
  };
 
 
 
 function reducer(state, action){
     switch(action.type){
+        case SET_PAGE_TITLE:
+            return {
+                ...state,
+                page: {
+                ...state.page,
+                title: action.payload,
+                },
+            };
+        case SET_PAGE_CONTENT:
+            return {
+                ...state,
+                page: {
+                ...state.page,
+                ...action.payload,
+                },
+            };
         case ADD_CART_ITEM:
             const item = action.payload;
-            const product = state.cartItems.find((x) => x.id === item.id);
+            const product = state.cart.cartItems.find((x) => x.id === item.id);
             if (product) {
-            cartItems = state.cartItems.map((x) =>
+              cartItems = state.cart.cartItems.map((x) =>
                 x.id === product.id ? item : x
-            );
-            return { ...state, cartItems };
+              );
+              return { ...state, cart: { ...state.cart, cartItems } };
             }
-            cartItems = [...state.cartItems, item];
-            return { ...state, cartItems };
+            cartItems = [...state.cart.cartItems, item];
+            return { ...state, cart: { ...state.cart, cartItems } };
         case REMOVE_CART_ITEM:
-            cartItems = state.cartItems.filter((x) => x.id !== action.payload);
-            return { ...state, cartItems };
+            cartItems = state.cart.cartItems.filter((x) => x.id !== action.payload);
+            return { ...state, cart: { ...state.cart, cartItems } };
         //Feed 資料到後台
         case BEGIN_PRODUCTS_FEED:
             return {
@@ -244,6 +301,107 @@ function reducer(state, action){
                 error: action.payload,
                 },
             };
+        //付款方式
+        case SAVE_SHIPPING_ADDRESS:
+            console.log('action.payload.shippingAddress = ')
+            console.log(action.payload)
+            return { ...state, cart: { ...state.cart, shippingAddress: action.payload } };
+        case SAVE_PAYMENT_METHOD:
+          return { ...state, cart: { ...state.cart, paymentMethod: action.payload } };
+        //建立訂單
+        case BEGIN_ORDER_CREATE:
+            return {
+              ...state,
+              orderInfo: {
+                ...state.orderInfo,
+                loading: true,
+                success: false,
+              }
+            };
+        case SUCCESS_ORDER_CREATE:
+          return {
+            ...state,
+            orderInfo: {
+              ...state.orderInfo,
+              loading: false,
+              order: action.payload,
+              success: true,
+              error: null,
+            },
+          };
+        case FAIL_ORDER_CREATE:
+          return {
+            ...state,
+            orderInfo: {
+              ...state.orderInfo,
+              loading: false,
+              order: { id: "" },
+              success: false,
+              error: action.payload,
+            },
+          };
+        case RESET_ORDER:
+          return {
+            ...state,
+            orderInfo: {
+              ...state.orderInfo,
+              loading: false,
+              order: { id: "" },
+              success: false,
+            },
+          };
+        case BEGIN_ORDER_DETAIL:
+          return {
+            ...state,
+            orderDetail: {
+              ...state.orderDetail,
+              loading: true,
+            }
+          };
+        
+        case SUCCESS_ORDER_DETAIL:
+          return {
+            ...state,
+            orderDetail: {
+              ...state.orderDetail,
+              loading: false,
+              order: action.payload,
+            },
+          };
+        case FAIL_ORDER_DETAIL:
+          return {
+            ...state,
+            orderDetail: {
+              ...state.orderDetail,
+              loading: false,
+              error: action.payload,
+            },
+          };
+        //查詢訂單
+        case SEARCH_USER_ORDERS:
+            return {
+              ...state,
+              userOrders: { ...state.userOrders, loading: true },
+            };
+        case SUCCESS_SEARCH:
+          return {
+            ...state,
+            userOrders: { 
+              ...state.userOrders,
+              loading: false,
+              orders: action.payload,
+              error: "",
+            },
+          };
+        case FAIL_SEARCH: 
+          return {
+            ...state,
+            userOrders: { 
+              ...state.userOrders,
+              loading: false,
+              error: action.payload,
+            },
+          };
         default:
             return state;
         

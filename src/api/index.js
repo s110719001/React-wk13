@@ -123,8 +123,6 @@ export const signOut = () => {
 
 export const checkLoginApi = () => {
   const user = auth.currentUser;
-  if(user){
-    return user.uid?  true : false;
-  }
+  return user.uid?  true : false;
 }
 

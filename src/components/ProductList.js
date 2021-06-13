@@ -8,20 +8,8 @@ import { StoreContext } from "../store";
 export default function ProductList() {
   const { state: { page: { products }, requestProducts: { loading } } } = useContext(StoreContext);
   const antIcon = <LoadingOutlined style={{ fontSize: 80, color: "#8183ff" }} spin />;
-  console.log(products);
+
   return (
-    /*<Row gutter={[40, 64]}>
-    {products.map(product => (
-        <Col 
-          key={product.id} 
-          lg={{ span: 24 }} 
-          xl={{ span: 8 }}
-          xxl={{ span: 8 }}
-        >
-          <ProductItem product={product}/>
-        </Col>
-      ))}
-    </Row>*/
     <>
     {loading
       ? (

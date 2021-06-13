@@ -1,9 +1,8 @@
 [
     {
-        "id":"1",
         "image":"/image/list/class1.png",
         "title":"抹茶控的第一堂課",
-        "price":"200",
+        "price":200,
         "lecturer":"Cccbbb",
         "student":"6",
         "stars":"2",
@@ -35,10 +34,9 @@
         ]
     },
     {
-        "id":"2",
         "image":"/image/list/class2.png",
         "title":"手沖咖啡學",
-        "price":"200",
+        "price":200,
         "lecturer":"Cccbbb",
         "student":"6",
         "stars":"2",
@@ -70,10 +68,9 @@
         ]
     },
     {
-        "id":"3",
         "image":"/image/list/class3.png",
         "title":"兩分鐘搞懂全球經濟",
-        "price":"200",
+        "price":200,
         "lecturer":"Cccbbb",
         "student":"6",
         "stars":"2",
@@ -103,10 +100,9 @@
             "/image/products/class3/image2.png"
         ]
     },{
-        "id":"4",
         "image":"/image/class1.png",
         "title":"兩分鐘搞懂全球經濟",
-        "price":"200",
+        "price":200,
         "lecturer":"Cccbbb",
         "student":"6",
         "stars":"2",
@@ -114,10 +110,9 @@
         "avaliable":"1"
     },
     {
-        "id":"5",
         "image":"/image/class2.png",
         "title":"兩分鐘搞懂全球經濟",
-        "price":"200",
+        "price":200,
         "lecturer":"Cccbbb",
         "student":"6",
         "stars":"2",
@@ -125,10 +120,9 @@
         "avaliable":"1"
     },
     {
-        "id":"6",
         "image":"/image/class3.png",
         "title":"兩分鐘搞懂全球經濟",
-        "price":"200",
+        "price":200,
         "lecturer":"Cccbbb",
         "student":"6",
         "stars":"2",

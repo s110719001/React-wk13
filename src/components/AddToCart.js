@@ -1,13 +1,12 @@
 import React, { useEffect, useContext, useState } from "react";
 import { Button, notification } from "antd"
 import { StoreContext } from "../store"
-import { cartItemAdd, CartItemAdd } from "../actions";
-import { ADD_CART_ITEM } from "../utils/constants";
-import Cookie from "js-cookie";
+import { CartItemAdd } from "../actions";
+import Cookies from "js-cookie";
 
 
-export default function AddToCart({ product }) {  
-  const { dispatch, state:{cartItems} } = useContext(StoreContext);
+export default function AddToCart() {  
+  const { dispatch, state: { cart: { cartItems }, productDetail: { product, qty } } } = useContext(StoreContext);
   const openNotification = () => {
     notification.open({
       message: '購買通知',
@@ -26,10 +25,11 @@ export default function AddToCart({ product }) {
     openNotification();
     CartItemAdd(dispatch,product);
     //cartItemAdd(dispatch, product, qty);
+    console.log(product.id);
   };
 
   useEffect(()=>{
-    Cookie.set("cartItems", JSON.stringify(cartItems));
+    Cookies.set("cartItems", JSON.stringify(cartItems));
   }, [cartItems])
 
   return (

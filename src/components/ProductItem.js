@@ -7,6 +7,7 @@ import { setProductDetail } from "../actions";
 
 export default function ProductItem({ product }){
     const { dispatch } = useContext(StoreContext);
+
     return(
             <Link className="card" 
                     onClick={() => {setProductDetail(dispatch, product.id, 1);}} 
