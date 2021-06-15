@@ -34,6 +34,8 @@ const LoginCard = ({ redirect }) => {
       }}
       onFinish={onFinish}
     >
+      <h2>歡迎加入上課趣！</h2>
+      <h2>現在就開始挑選課程吧！</h2>
       <Form.Item
         name="email"
         rules={[
@@ -50,7 +52,7 @@ const LoginCard = ({ redirect }) => {
       >
         <Input
           prefix={<MailOutlined className="site-form-item-icon" />}
-          placeholder="E-Mail"
+          placeholder="輸入帳號"
         />
       </Form.Item>
       <Form.Item
@@ -66,7 +68,7 @@ const LoginCard = ({ redirect }) => {
         <Input.Password
           prefix={<LockOutlined className="site-form-item-icon" />}
           type="password"
-          placeholder="Password"
+          placeholder="輸入密碼"
         />
       </Form.Item>
       <Form.Item>
@@ -74,11 +76,11 @@ const LoginCard = ({ redirect }) => {
           name="remember"
           noStyle
         >
-          <Checkbox onChange={onChange} checked={remember}>Remember me</Checkbox>
+          <Checkbox onChange={onChange} checked={remember}>記住帳號密碼</Checkbox>
         </Form.Item>
 
         <Link className="login-form__forgot" to={"/"}>
-          Forgot password
+            忘記密碼？
         </Link>
       </Form.Item>
 
@@ -90,7 +92,7 @@ const LoginCard = ({ redirect }) => {
             className="login-form__button"
             loading
           >
-            Log in
+            登入
           </Button>
         ) : (
           <Button
@@ -98,10 +100,11 @@ const LoginCard = ({ redirect }) => {
             htmlType="submit"
             className="login-form__button"
           >
-            Log in
+            登入
           </Button>
         )}
-        Or <Link to={"/register?redirect=/"}>register now!</Link>
+        <br></br>
+        <Link to={"/register?redirect=/"}>註冊帳號</Link>
         {error === "" ? (
           <></>
         ) : (
@@ -114,6 +117,11 @@ const LoginCard = ({ redirect }) => {
           </div>
         )}
       </Form.Item>
+      <div className="social">
+        <img src="image/social/google.png"/>
+        <img src="image/social/facebook.png"/>
+        <img src="image/social/apple.png"/>
+      </div>
     </Form>
   );
 };

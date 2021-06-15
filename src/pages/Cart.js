@@ -42,7 +42,7 @@ export default function Cart(){
                 </div>
                 <div className="cart-bar bg-main"></div>
                 {cartItems.length === 0 ? (
-                    <div>Cart is empty</div>
+                    <h2>Cart is empty</h2>
                 ) : (
                     cartItems.map(item => (
                         <div className="cart-item">

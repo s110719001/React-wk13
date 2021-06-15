@@ -61,7 +61,7 @@ const RegisterCard = ({ redirect }) => {
     >
       <Form.Item
         name="name"
-        label="Your Name"
+        label="輸入名字"
         tooltip="What do you want others to call you?"
         rules={[
           {
@@ -75,7 +75,7 @@ const RegisterCard = ({ redirect }) => {
       </Form.Item>
       <Form.Item
         name="email"
-        label="E-mail"
+        label="輸入Email"
         rules={[
           {
             type: "email",
@@ -92,7 +92,7 @@ const RegisterCard = ({ redirect }) => {
 
       <Form.Item
         name="password"
-        label="Password"
+        label="輸入密碼"
         rules={[
           {
             required: true,
@@ -106,7 +106,7 @@ const RegisterCard = ({ redirect }) => {
 
       <Form.Item
         name="rePassword"
-        label="Re-enter Password"
+        label="再次輸入密碼"
         dependencies={["password"]}
         hasFeedback
         rules={[
@@ -144,7 +144,7 @@ const RegisterCard = ({ redirect }) => {
         {...tailFormItemLayout}
       >
         <Checkbox>
-          I have read the <Link to={"/"}>agreement</Link>
+          <Link to={"/"}>同意使用條款</Link>
         </Checkbox>
       </Form.Item>
       <Form.Item {...tailFormItemLayout}>
@@ -155,7 +155,7 @@ const RegisterCard = ({ redirect }) => {
             htmlType="submit"
             loading
           >
-            Create your account
+            註冊
           </Button>
         ) : (
           <Button
@@ -163,11 +163,11 @@ const RegisterCard = ({ redirect }) => {
             className="login-form__button"
             htmlType="submit"
           >
-            Create your account
+            註冊
           </Button>
         )}
-         Already have an account?{" "}
-        <Link to={"/login?redirect=/"}>Login</Link>
+         有帳號了？{" "}
+        <Link to={"/login?redirect=/"}>登入</Link>
         {error === "" ? (
           <></>
         ) : (

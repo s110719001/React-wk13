@@ -36,7 +36,9 @@ export default function ProductItem({ product }){
                             <p className="productlist-rating-comments">{product.comments}個評價</p>
                         </div>
                         <div className="productlist-bar"></div>
-                        <Link className="productlist-btn" to="/">
+                        <Link className="productlist-btn"
+                                onClick={() => {setProductDetail(dispatch, product.id, 1);}} 
+                                 to="/">
                             <AddToCart product={product}></AddToCart>
                         </Link>
                     </div>

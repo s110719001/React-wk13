@@ -5,8 +5,8 @@ import { CartItemAdd } from "../actions";
 import Cookies from "js-cookie";
 
 
-export default function AddToCart() {  
-  const { dispatch, state: { cart: { cartItems }, productDetail: { product, qty } } } = useContext(StoreContext);
+export default function AddToCart({product}) {  
+  const { dispatch, state: { cart: { cartItems } } } = useContext(StoreContext);
   const openNotification = () => {
     notification.open({
       message: '購買通知',
