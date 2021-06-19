@@ -1,6 +1,6 @@
 import { useEffect, useContext } from "react";
-import { UserOutlined, UserSwitchOutlined } from '@ant-design/icons';
-import { useHistory } from 'react-router-dom';
+import { Button } from "antd";
+import { useHistory, Link } from 'react-router-dom';
 
 import { StoreContext } from "../store"
 
@@ -22,17 +22,26 @@ export default function UserInfo(props) {
 
    return (
       <>
-         <nav onClick={goToProfile} style={{ ...props.style }} className="header-cart-summary" >
+         <nav onClick={goToProfile} style={{ ...props.style }} className="header-profile" >
             {userInfo
-               ? <UserOutlined style={{ fontSize: '20px', color: '#ccc' }} />
-               : <UserSwitchOutlined style={{ fontSize: '20px', color: '#ccc' }} />
+               ? <img className="header-profile-icon" src="image/header/profile.png" />
+               : <Button className="header-btn-login header-btn-login text-white">
+                     
+                     <img
+                        className="header-phone-burger-btn"
+                        src="/image/header/burger.png"
+                     />
+                     <div className="header-btn-name">登入</div>
+                     
+                  </Button>
+
             }
-            <p className="cart-summary-text">
+            {/* <p className="cart-summary-text">
                {userInfo
                   ? `${userInfo.displayName}'s`
                   : `訪客`
                }
-            </p>
+            </p> */}
          </nav>
       </>
    );

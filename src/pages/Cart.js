@@ -44,27 +44,32 @@ export default function Cart(){
                 {cartItems.length === 0 ? (
                     <h2>Cart is empty</h2>
                 ) : (
-                    cartItems.map(item => (
-                        <div className="cart-item">
-                            <img
-                            className="cart-item-image"
-                            src={item.image}
-                            />
-                            <div className="cart-item-detail text-color-main">
-                                <div className="cart-item-name">{item.title}</div>   
-                                <div className="cart-item-price">{item.price}</div>
-                                <div className="cart-item-qty bg-white">x 1</div>
-                            </div>
-                            <div className="cart-btn">
-                                <Button onClick={() => {cartItemRemove(dispatch, item.id)}} className="cart-remove-btn bg-light-red text-white">
-                                    從購物車刪除
-                                </Button>
-                                <Button className="cart-buy-btn bg-main text-white">
-                                    購買此課程
-                                </Button>
-                            </div>
+                        <div>
+                            {
+                                cartItems.map(item => (
+                                    <div className="cart-item">
+                                        <img
+                                        className="cart-item-image"
+                                        src={item.image}
+                                        />
+                                        <div className="cart-item-detail text-color-main">
+                                            <div className="cart-item-name">{item.title}</div>   
+                                            <div className="cart-item-price">{item.price}</div>
+                                            <div className="cart-item-qty bg-white">x 1</div>
+                                        </div>
+                                        <div className="cart-btn">
+                                            <Button onClick={() => {cartItemRemove(dispatch, item.id)}} className="cart-remove-btn bg-light-red text-white">
+                                                從購物車刪除
+                                            </Button>
+                                        </div>
+                                    </div>
+                            ))
+                            }
+                            <Button type={"primary"}>
+                                結帳
+                            </Button>
                         </div>
-                )))}
+                    )}
             </Content>
             <Footer className="layout-footer">
                 <AppFooter></AppFooter>

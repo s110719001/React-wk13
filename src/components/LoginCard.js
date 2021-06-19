@@ -34,8 +34,10 @@ const LoginCard = ({ redirect }) => {
       }}
       onFinish={onFinish}
     >
-      <h2>歡迎加入上課趣！</h2>
-      <h2>現在就開始挑選課程吧！</h2>
+      <div className="login-form_welcome text-color-main">
+        <div className="login-form_welcome_word">歡迎加入上課趣！</div>
+        <div className="login-form_welcome_word">現在就開始挑選課程吧！</div>
+      </div>
       <Form.Item
         name="email"
         rules={[
@@ -51,8 +53,9 @@ const LoginCard = ({ redirect }) => {
         hasFeedback
       >
         <Input
-          prefix={<MailOutlined className="site-form-item-icon" />}
+          prefix={<img src="image/login/account.png" className="site-form-item-icon" />}
           placeholder="輸入帳號"
+          className="login-form_account"
         />
       </Form.Item>
       <Form.Item
@@ -66,9 +69,10 @@ const LoginCard = ({ redirect }) => {
         hasFeedback
       >
         <Input.Password
-          prefix={<LockOutlined className="site-form-item-icon" />}
+          prefix={<img src="image/login/password.png" className="site-form-item-icon" />}
           type="password"
           placeholder="輸入密碼"
+          className="login-form_password"
         />
       </Form.Item>
       <Form.Item>
@@ -76,20 +80,20 @@ const LoginCard = ({ redirect }) => {
           name="remember"
           noStyle
         >
-          <Checkbox onChange={onChange} checked={remember}>記住帳號密碼</Checkbox>
+          <Checkbox onChange={onChange} className="login-form__remember text-color-main" checked={remember}>記住帳號密碼</Checkbox>
         </Form.Item>
 
-        <Link className="login-form__forgot" to={"/"}>
+        <Link className="login-form__forgot text-color-main" to={"/"}>
             忘記密碼？
         </Link>
       </Form.Item>
 
-      <Form.Item>
+      <Form.Item className="login-form__login_register">
         {loading ? (
           <Button
             type="primary"
             htmlType="submit"
-            className="login-form__button"
+            className="login-form__login_button"
             loading
           >
             登入
@@ -98,13 +102,13 @@ const LoginCard = ({ redirect }) => {
           <Button
             type="primary"
             htmlType="submit"
-            className="login-form__button"
+            className="login-form__login_button"
           >
             登入
           </Button>
         )}
         <br></br>
-        <Link to={"/register?redirect=/"}>註冊帳號</Link>
+        <Link to={"/register?redirect=/"} className="login-form__register_button text-color-main">註冊帳號</Link>
         {error === "" ? (
           <></>
         ) : (
@@ -117,10 +121,17 @@ const LoginCard = ({ redirect }) => {
           </div>
         )}
       </Form.Item>
-      <div className="social">
-        <img src="image/social/google.png"/>
-        <img src="image/social/facebook.png"/>
-        <img src="image/social/apple.png"/>
+      <div className="login_social">
+        <div className="login_social_word">
+          <div className="login_social_or_bar"></div>
+          <div className="login_social_word_or">or</div>
+          <div className="login_social_or_bar"></div>
+        </div>
+        <div className="login_social_image">
+          <img src="image/social/google.png"/>
+          <img className="login_social_image_fb" src="image/social/facebook.png"/>
+          <img src="image/social/apple.png"/>
+        </div>
       </div>
     </Form>
   );

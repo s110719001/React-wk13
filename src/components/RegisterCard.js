@@ -61,57 +61,65 @@ const RegisterCard = ({ redirect }) => {
     >
       <Form.Item
         name="name"
-        label="輸入名字"
         tooltip="What do you want others to call you?"
         rules={[
           {
-            required: true,
+            required: false,
             message: "Please input your name!",
             whitespace: true,
           },
         ]}
       >
-        <Input />
+        <Input 
+          className="register-form_name"
+          placeholder="輸入名字" 
+          prefix={<img src="image/register/account.png" className="site-form-item-icon" />}
+        />
       </Form.Item>
       <Form.Item
         name="email"
-        label="輸入Email"
         rules={[
           {
             type: "email",
             message: "The input is not valid E-mail!",
           },
           {
-            required: true,
+            required: false,
             message: "Please input your E-mail!",
           },
         ]}
       >
-        <Input />
+        <Input
+          className="register-form_email"
+          placeholder="輸入Email" 
+          prefix={<img src="image/register/email.png" className="site-form-item-icon" />}
+        />
       </Form.Item>
 
       <Form.Item
         name="password"
-        label="輸入密碼"
         rules={[
           {
-            required: true,
+            required: false,
             message: "Please input your password!",
           },
         ]}
         hasFeedback
       >
-        <Input.Password />
+        <Input
+          className="register-form_password"
+          placeholder="輸入密碼"
+          prefix={<img src="image/register/password.png" className="site-form-item-icon" />}
+        />
       </Form.Item>
 
       <Form.Item
         name="rePassword"
-        label="再次輸入密碼"
         dependencies={["password"]}
         hasFeedback
         rules={[
           {
-            required: true,
+            required: false,
             message: "Please re-enter your password!",
           },
           ({ getFieldValue }) => ({
@@ -127,7 +135,11 @@ const RegisterCard = ({ redirect }) => {
           }),
         ]}
       >
-        <Input.Password />
+        <Input
+          className="register-form_repassword" 
+          placeholder="再次輸入密碼" 
+          prefix={<img src="image/register/password.png" className="site-form-item-icon" />}
+        />
       </Form.Item>
 
       <Form.Item
@@ -143,15 +155,15 @@ const RegisterCard = ({ redirect }) => {
         ]}
         {...tailFormItemLayout}
       >
-        <Checkbox>
-          <Link to={"/"}>同意使用條款</Link>
+        <Checkbox className="register-form_checkbox">
+          <Link to={"/"} className="register-form_checkbox_word text-color-main">同意使用條款</Link>
         </Checkbox>
       </Form.Item>
-      <Form.Item {...tailFormItemLayout}>
+      <Form.Item className="login-form__login_register" {...tailFormItemLayout}>
         {loading ? (
           <Button
             type="primary"
-            className="login-form__button"
+            className="login-form__login_button"
             htmlType="submit"
             loading
           >
@@ -160,14 +172,16 @@ const RegisterCard = ({ redirect }) => {
         ) : (
           <Button
             type="primary"
-            className="login-form__button"
+            className="login-form__login_button"
             htmlType="submit"
           >
             註冊
           </Button>
         )}
-         有帳號了？{" "}
-        <Link to={"/login?redirect=/"}>登入</Link>
+        <br/>
+        <div className="register-form_haveaccount">有帳號了？</div>
+        <br/>
+        <Link to={"/login?redirect=/"} className="register-form_login text-color-main">登入</Link>
         {error === "" ? (
           <></>
         ) : (
