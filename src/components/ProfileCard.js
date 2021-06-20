@@ -132,12 +132,8 @@ const ProfileCard = () => {
           </Button>
         </Form.Item>
       </Form>
-      <div>
-          您的訂單
-      </div>
-      <div>
-          為您推薦
-      </div>
+      
+
     </div>
   );
 };

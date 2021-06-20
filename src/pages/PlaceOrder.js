@@ -8,7 +8,7 @@ const { Header, Content, Footer } = Layout;
 function PlaceOrder() {
   return (
     <Layout className="container main-layout">
-      <Layout className="bg-gray main-area">
+      <Layout className="main-area">
         <Header className="layout-header">
           <AppHeader title="Place Order Page" step1 step2 step3 step4 />
         </Header>

@@ -7,17 +7,15 @@ import AppHeader from "../components/Header";
 
 const { Header, Content, Footer } = Layout;
 
-export default function Product({ match }) {
-    const product = products.find(
-       x => x.id === match.params.productId
-    );
+export default function Product() {
+    
     return (
-       <Layout className="container bg-white">
+       <Layout className="container">
             <Header className="layout-header">
                <AppHeader></AppHeader>
             </Header>
             <Content className="layout-content">
-                <ProductDetail product={product} />
+                <ProductDetail/>
             </Content>
             <Footer className="layout-footer">
                <AppFooter></AppFooter>
