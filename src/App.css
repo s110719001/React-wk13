@@ -1788,7 +1788,7 @@
   border-radius: 10px;
   background-color: white;
   box-shadow: 0px 3px 5px #cecdcd;
-  padding: 33px 49px 69px 23.9px;
+  padding: 33px 40px 69px 23.9px;
   margin: 0 84px 0 0;
 }
 .shipping-form-title{
@@ -1824,7 +1824,7 @@
   margin: 0 16.7px 0 0;
 }
 .shipping-form-email-input{
-  width: 420px;
+  width: 438px;
   height: 60px;
   color: #8B9195;
   font-size: 20px;
@@ -1861,7 +1861,7 @@
   border-radius: 10px;
   box-shadow: 0px 3px 5px #cecdcd;
   padding: 21.5px 21px 21.5px 21px;
-  margin: 0 0 0 10px;
+  margin: 0 0 0 20px;
 }
 .shipping-form-address{
   margin: 0 0 25px 0;
@@ -1888,7 +1888,7 @@
   border-radius: 10px;
   box-shadow: 0px 3px 5px #cecdcd;
   padding: 21.5px 21px 21.5px 21px;
-  margin: 0 0 0 10px;
+  margin: 0 0 0 20px;
 }
 .shipping-form-taxid{
   margin: 0 0 0 23.7px;
@@ -1912,7 +1912,7 @@
   border-radius: 10px;
   box-shadow: 0px 3px 5px #cecdcd;
   padding: 21.5px 21px 21.5px 21px;
-  margin: 0 0 0 10px;
+  margin: 0 0 0 20px;
 }
 .invoice-form{
   display: flex;
