@@ -1,5 +1,4 @@
 import { Layout } from "antd";
-import ShippingHeader from "../components/ShippingHeader";
 import AppFooter from "../components/Footer";
 import AppHeader from "../components/Header";
 import ShippingAddressCard from "../components/ShippingAddressCard";
@@ -10,7 +9,7 @@ function Shipping() {
     <Layout className="container main-layout">
       <Layout className="bg-gray main-area">
         <Header className="layout-header">
-          <AppHeader title="Shipping Page" step1 step2 />
+          <AppHeader title="Shipping Page"/>
         </Header>
         <Content className="layout-content">
           <ShippingAddressCard />

@@ -37,7 +37,7 @@ import {
       //付款地址與方式
     SAVE_SHIPPING_ADDRESS,
     SAVE_PAYMENT_METHOD,
-
+    SAVE_INVOICE_METHOD,
     //訂單建立
     BEGIN_ORDER_CREATE,
     SUCCESS_ORDER_CREATE,
@@ -72,7 +72,7 @@ export const CartItemAdd = ( dispatch, product ) =>{
         id: product.id,
         title: product.class_name,
         image: product.class_cover,
-        price: product.class_price,
+        price: product.price,
     };
     dispatch({
         type: ADD_CART_ITEM,
@@ -226,7 +226,6 @@ export const createOrder = async (dispatch, cart) => {
     const item = {
       orderItems: cart.cartItems,
       shippingAddress: cart.shippingAddress,
-      paymentMethod: cart.paymentMethod,
       itemsPrice: cart.itemsPrice,
       shippingPrice: cart.shippingPrice,
       taxPrice: cart.taxPrice,
@@ -294,9 +293,16 @@ export const saveShippingAddress = (dispatch, shippingAddress) => {
   localStorage.setItem('shippingAddress', JSON.stringify(shippingAddress));
 }
 
-export const savePaymentMethod = (dispatch, paymentMethod) => {
-  dispatch({
-    type: SAVE_PAYMENT_METHOD,
-    payload: paymentMethod.paymentMethod,
-  });
-}
+// export const savePaymentMethod = (dispatch, paymentMethod) => {
+//   dispatch({
+//     type: SAVE_PAYMENT_METHOD,
+//     payload: paymentMethod.paymentMethod,
+//   });
+// }
+
+// export const saveInvoiceMethod = (dispatch, invoiceMethod) => {
+//   dispatch({
+//     type: SAVE_INVOICE_METHOD,
+//     payload: invoiceMethod.invoiceMethod,
+//   });
+// }

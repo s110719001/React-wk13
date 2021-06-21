@@ -72,7 +72,8 @@ export default function OrderCard({ orderId }) {
                      <div className="card card-body">
                         <h2 style={{ color: 'white' }}>Payment</h2>
                         <p>
-                           <strong>Method:</strong> {order.paymentMethod}
+                           <strong>Method:</strong> {order.shippingAddress.InvoiceMethod}
+                           
                         </p>
                      </div>
                      <div className="card card-body">

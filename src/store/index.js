@@ -9,6 +9,7 @@ import {
     //付款地址與方式
     SAVE_SHIPPING_ADDRESS,
     SAVE_PAYMENT_METHOD,
+    SAVE_INVOICE_METHOD,
     //Feed 資料到後端
     SET_PRODUCT_DETAIL,
     BEGIN_PRODUCTS_FEED,
@@ -93,7 +94,6 @@ const initialState = {
     cart: {
         cartItems,
         shippingAddress,
-        paymentMethod: 'Google',
       },
     feedProducts: {
         loading: false,
@@ -306,8 +306,7 @@ function reducer(state, action){
             console.log('action.payload.shippingAddress = ')
             console.log(action.payload)
             return { ...state, cart: { ...state.cart, shippingAddress: action.payload } };
-        case SAVE_PAYMENT_METHOD:
-          return { ...state, cart: { ...state.cart, paymentMethod: action.payload } };
+        
         //建立訂單
         case BEGIN_ORDER_CREATE:
             return {

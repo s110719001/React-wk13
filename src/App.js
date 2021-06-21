@@ -9,7 +9,6 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
 import Shipping from './pages/Shipping';
-import Payment from './pages/Payment';
 import PlaceOrder from './pages/PlaceOrder';
 import Order from './pages/Order';
 import Create from './pages/Create';
@@ -29,7 +28,6 @@ function App() {
           <Route path="/profile" component={Profile} />
           <Route path="/givelecture" component={Create} />
           <Route path="/shipping" component={Shipping} />
-          <Route path="/payment" component={Payment} />
           <Route path="/placeorder" component={PlaceOrder} />
           <Route path="/order/:orderId" component={Order} />
         </Switch>
