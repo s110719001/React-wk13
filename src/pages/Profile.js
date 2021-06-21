@@ -2,7 +2,7 @@ import { Layout } from "antd";
 import AppHeader from "../components/Header";
 import AppFooter from "../components/Footer";
 import ProfileCard from "../components/ProfileCard";
-import OrderCard2 from "../components/OrderCard2";
+import OrderCard from "../components/OrderCard";
 import RecommendCard from "../components/RecommendCard";
 
 const { Header, Content, Footer } = Layout;
@@ -15,7 +15,7 @@ function Profile() {
         </Header>
         <Content className="layout-content profile-layout">
           <ProfileCard />
-          <OrderCard2 />
+          <OrderCard />
           <RecommendCard />
         </Content>
         <Footer className="layout-footer">

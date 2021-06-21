@@ -93,7 +93,11 @@ const initialState = {
     },
     cart: {
         cartItems,
-        shippingAddress,
+        shippingAddress:{
+          InvoiceMethod: "Phone",
+          PaymentMethod: "Google Pay",
+          taxid: '',
+        },
       },
     feedProducts: {
         loading: false,

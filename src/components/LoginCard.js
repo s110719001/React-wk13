@@ -4,6 +4,7 @@ import { Form, Input, Button, Checkbox } from 'antd';
 import { WarningOutlined, MailOutlined, LockOutlined } from '@ant-design/icons';
 import { checkLogin, loginToFirebase, rememberLoginUser } from '../actions'
 import { StoreContext } from "../store"
+import BookLoading from "../components/BookLoading"
 
 const LoginCard = ({ redirect }) => {
   const { state: { userSignin: { userInfo, loading, error, remember } }, dispatch } = useContext(StoreContext);
@@ -90,49 +91,47 @@ const LoginCard = ({ redirect }) => {
 
       <Form.Item className="login-form__login_register">
         {loading ? (
-          <Button
-            type="primary"
-            htmlType="submit"
-            className="login-form__login_button"
-            loading
-          >
-            登入
-          </Button>
+          <BookLoading/>
         ) : (
-          <Button
-            type="primary"
-            htmlType="submit"
-            className="login-form__login_button"
-          >
-            登入
-          </Button>
+          <>
+            <Button
+              type="primary"
+              htmlType="submit"
+              className="login-form__login_button"
+            >
+              登入
+            </Button>
+            <div className="login_social">
+              <div className="login_social_word">
+                <div className="login_social_or_bar"></div>
+                <div className="login_social_word_or">or</div>
+                <div className="login_social_or_bar"></div>
+              </div>
+              <div className="login_social_image">
+                <img src="image/social/google.png"/>
+                <img className="login_social_image_fb" src="image/social/facebook.png"/>
+                <img src="image/social/apple.png"/>
+              </div>
+            </div>
+          </>
         )}
         <br></br>
         <Link to={"/register?redirect=/"} className="login-form__register_button text-color-main">註冊帳號</Link>
         {error === "" ? (
           <></>
         ) : (
-          <div className="login-form__error-wrap">
-            <h3 className="login-form__error-title">
-              <WarningOutlined className="site-form-item-icon" />
-              {"  "}There was a problem
-            </h3>
-            <p className="login-form__error-message">{error}</p>
+          <div>
+            <div className="login-form__error-wrap">
+              <h3 className="login-form__error-title">
+                <WarningOutlined className="site-form-item-icon" />
+                {"  "}There was a problem
+              </h3>
+              <p className="login-form__error-message">{error}</p>
+            </div>
           </div>
         )}
       </Form.Item>
-      <div className="login_social">
-        <div className="login_social_word">
-          <div className="login_social_or_bar"></div>
-          <div className="login_social_word_or">or</div>
-          <div className="login_social_or_bar"></div>
-        </div>
-        <div className="login_social_image">
-          <img src="image/social/google.png"/>
-          <img className="login_social_image_fb" src="image/social/facebook.png"/>
-          <img src="image/social/apple.png"/>
-        </div>
-      </div>
+      
     </Form>
   );
 };

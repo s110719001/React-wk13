@@ -1,7 +1,7 @@
 import { useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { Row, Col, Button, Spin } from "antd";
-import { LoadingOutlined } from '@ant-design/icons';
+import BookLoading from "../components/BookLoading"
 import { createOrder, resetOrder, requestOrderDetail } from "../actions"
 import { StoreContext } from "../store";
 
@@ -9,7 +9,6 @@ export default function PlaceOrderCard() {
   const { state: { cart, orderInfo: { loading, success, order } }, dispatch } = useContext(StoreContext);
   const { cartItems } = cart;
   const history = useHistory()
-  const antIcon = <LoadingOutlined style={{ fontSize: 80, color: "#8183ff" }} spin />;
 
   const placeOrderHandler = () => {
     createOrder(dispatch, cart)
@@ -39,9 +38,7 @@ export default function PlaceOrderCard() {
     <>
       {loading
         ? (
-          <div className="spinner-wrap">
-            <Spin indicator={antIcon} className="spinner" />
-          </div>
+          <BookLoading/>
         ) : (
           <Row gutter={[24, 24]}>
             <Col
@@ -88,9 +85,7 @@ export default function PlaceOrderCard() {
             <div className="cart-total-price">${getTotalPrice()}</div>
                 </div>
               </div>
-
-            </Col>
-            <Button
+              <Button
                   className="primary-btn"
                   block
                   type="primary"
@@ -98,6 +93,8 @@ export default function PlaceOrderCard() {
                 >
                   確認並送出
                 </Button>
+            </Col>
+            
           </Row>
         )
       }

@@ -1,15 +1,14 @@
 import { Layout } from "antd";
-import OrderHeader from "../components/OrderHeader";
 import OrderCard from "../components/OrderCard";
+import AppHeader from "../components/Header";
 import AppFooter from "../components/Footer";
 const { Header, Content, Footer } = Layout;
 
 function Order({ match }) {
    return (
-    <Layout className="container main-layout">
-      <Layout className="bg-gray main-area">
+    <Layout className="container">
         <Header className="layout-header">
-          <OrderHeader title={`Order: ${match.params.orderId}`} />
+          <AppHeader title={`Order: ${match.params.orderId}`} />
         </Header>
         <Content className="layout-content">
            <OrderCard orderId={match.params.orderId} />
@@ -17,7 +16,6 @@ function Order({ match }) {
         <Footer className="layout-footer">
           <AppFooter />
         </Footer>
-      </Layout>
     </Layout>
   );
 }

@@ -228,7 +228,6 @@ export const createOrder = async (dispatch, cart) => {
       shippingAddress: cart.shippingAddress,
       itemsPrice: cart.itemsPrice,
       shippingPrice: cart.shippingPrice,
-      taxPrice: cart.taxPrice,
       totalPrice: cart.totalPrice,
     };    
     const orderInfo = await createOrderApi(item);

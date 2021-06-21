@@ -1,22 +1,44 @@
 import { Link } from "react-router-dom";
-import { Button, Select, Spin } from "antd";
-import React, { useState, useContext } from 'react';
-import { LoadingOutlined } from '@ant-design/icons';
+import { Button, Select, notification } from "antd";
+import React, { useEffect, useState, useContext } from 'react';
 import { StoreContext } from "../store"
-import { setProductDetail } from "../actions";
+import { CartItemAdd } from "../actions";
+import BookLoading from "../components/BookLoading";
+import AddToCart from "./AddToCart";
+import Cookies from "js-cookie";
 
 const { Option } = Select;
 export default function ProductDetail(){
-    const { state: { productDetail: { product, avaliable }, requestProducts: { loading } }, dispatch } = useContext(StoreContext);
-    const antIcon = <LoadingOutlined style={{ fontSize: 80, color: "#8183ff" }} spin />;
-    
+    const { state: { productDetail: { product, avaliable }, requestProducts: { loading }, cart: { cartItems } }, dispatch } = useContext(StoreContext);
+    const openNotification = () => {
+        notification.open({
+        message: '購買通知',
+        description:
+            '新增了一堂課至購物車\n'+
+            "共"+(cartItems.length+1)+"堂課",
+        onClick: () => {
+            console.log(cartItems.length);
+        },
+        placement: 'bottomRight'
+        });
+    };
+
+
+    const addToCart = () => {
+        openNotification();
+        CartItemAdd(dispatch,product);
+        //cartItemAdd(dispatch, product, qty);
+        console.log(product.id);
+    };
+
+    useEffect(()=>{
+        Cookies.set("cartItems", JSON.stringify(cartItems));
+    }, [cartItems])
     return(
         <>
          {loading
             ? (
-               <div className="spinner-wrap">
-                  <Spin indicator={antIcon} className="spinner" />
-               </div>
+               <BookLoading/>
             ) : (
             <div className="product">
                 <div className="product-intro text-color-main">
@@ -29,7 +51,7 @@ export default function ProductDetail(){
                         <p className="product-price">{product.class_price}</p>
                         <p className="product-bought">{product.class_bought}</p>
                         <p className="product-time">{product.class_time}</p>
-                        <Select style={{marginRight:'12px'}} defaultValue={1}
+                        {/* <Select style={{marginRight:'12px'}} defaultValue={1}
                         onChange={val => setProductDetail(dispatch, product.id, val, product.avaliable)}>
                             {[...Array(product.avaliable).keys()].map((x) =>(
                                 <Option key={x+1} value={x+1}>
@@ -37,9 +59,12 @@ export default function ProductDetail(){
                                 </Option>
                             ))} 
                         </Select>
-                        <div>{avaliable}人要上課</div>
-                        <Button className="product-addtocart-btn bg-main text-white">加入購物車</Button>
-                        
+                        <div>{avaliable}人要上課</div> */}
+                        <Link
+                                 onClick={addToCart}
+                                 to={`/product/${product.id}`}>
+                            <Button className="product-addtocart-btn text-white">加入購物車</Button>
+                        </Link>
                     </div>
                 </div>
                 <div className="product-phone-block-one">
