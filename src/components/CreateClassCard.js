@@ -13,7 +13,6 @@ const CreateClassCard = () => {
     },
     dispatch,
   } = useContext(StoreContext);
-  const { displayName, email } = userInfo;
   const history = useHistory();
   const [form] = Form.useForm();
 
@@ -23,7 +22,10 @@ const CreateClassCard = () => {
   };
 
   return (
-    <div className="create-layout">
+    <>
+    {userInfo
+      ? 
+        <div className="create-layout">
         <Form
         onFinish={handleUpdate}
         name="normal_login"
@@ -131,6 +133,9 @@ const CreateClassCard = () => {
         送出
       </Button>
     </div>
+      : <div className="create-not-login">親愛的講師您好，請先登入再進行開課動作 !</div>
+    }
+     </> 
   );
 };
 export default CreateClassCard;

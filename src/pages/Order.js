@@ -1,5 +1,5 @@
 import { Layout } from "antd";
-import OrderCard from "../components/OrderCard";
+import OrderDetail from "../components/OrderDetail";
 import AppHeader from "../components/Header";
 import AppFooter from "../components/Footer";
 const { Header, Content, Footer } = Layout;
@@ -11,7 +11,7 @@ function Order({ match }) {
           <AppHeader title={`Order: ${match.params.orderId}`} />
         </Header>
         <Content className="layout-content">
-           <OrderCard orderId={match.params.orderId} />
+           <OrderDetail orderId={match.params.orderId} />
         </Content>
         <Footer className="layout-footer">
           <AppFooter />

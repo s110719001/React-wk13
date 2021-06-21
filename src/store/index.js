@@ -94,7 +94,7 @@ const initialState = {
     cart: {
         cartItems,
         shippingAddress:{
-          InvoiceMethod: "Phone",
+          InvoiceMethod: "3DHG/IK",
           PaymentMethod: "Google Pay",
           taxid: '',
         },

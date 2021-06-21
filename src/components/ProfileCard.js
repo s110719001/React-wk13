@@ -26,6 +26,11 @@ const ProfileCard = () => {
   };
   return (
     <div>
+      <div className="profile-user-phone-size">
+          <img className="profile-user-icon-phone-size" src="image/profile/usericon.png"/>
+          <img className="profile-user-upload-icon-phone-size" src="image/profile/uploadicon.png"/>
+          <h1 className="profile-user-welcome-phone-size text-color-main">{displayName}，歡迎回來!</h1>
+        </div>
       <Form
       onFinish={handleUpdate}
       name="normal_login"

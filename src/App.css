@@ -53,12 +53,6 @@
     margin-top: 47px;
     
   }
-  .header-btn-name{
-    display: none;
-  }
-  .header-btn-login{
-    display: none;
-  }
 } 
 
 
@@ -159,10 +153,10 @@
   margin-bottom: 15px;
 }
 .header-btn-login{
+  background-color: #4A8091;
   border-radius: 20px;
   width:115px;
   height:54px;
-  margin:0;
   display: flex;
   flex-direction: row;
   border-color: white;
@@ -171,9 +165,6 @@
   font-size: 24px;
   box-shadow: 0 0 0 0;
   margin: 0 10px 0 0;
-}
-.header-btn-login{
-  background-color: #4A8091;
 }
 .header-btn-login:hover{
   border-color: #60a8be;
@@ -219,18 +210,20 @@
   .header-btn-start{
     display: none;
   }
-  .header-btn-name{
-    display: none;
-  }
   .header-btn-login{
-    background-color: white;
-    height:auto;
-    width:auto;
+    width: 55px;
+    height: 30px;
+    border-radius: 10px;
+    margin: 0 0 0 -10px;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  .header-btn-login:focus{
-    background-color: white;
-    border-color: white;
+  .header-btn-name{
+    margin: 0 0 0 0;
   }
+
   
   .header-btn-cart{
     height:auto;
@@ -244,7 +237,8 @@
     cursor: pointer;
   }
   .header-profile-icon{
-    display: none;
+    width: 23px;
+    margin:0;
   }
 }
 
@@ -256,8 +250,10 @@
   flex-direction: column;
   align-items: center;
   padding: 0 47px 0 47px;
+  
 }
 .block-title{
+  margin-top: 90px;
   font-size: 35px;
   color: #525A60;
 }
@@ -271,6 +267,7 @@
 @media(max-width:540px){
   .block{
     padding:0;
+    margin:0;
   }
   .block-title{
     font-size: 12px;
@@ -284,7 +281,7 @@
 }
 
 .search{
-  width:100%;
+  width:1920px;
   height:683px;
   padding:0;
   background-size:100% auto;
@@ -368,7 +365,7 @@
 
 .productlist-block{
   padding: 0 60px 0 60px;
-  margin: 89px 0 150px 0;
+  margin: 0 0 150px 0;
 }
 .productlist-card{
   width:100%;
@@ -437,7 +434,7 @@
     padding:0;
   }
   .productlist-block{
-    padding:0;
+    padding: 0 -60px 0 0;
     margin: 20px 0 0 0;
     display: flex;
     align-items: center;
@@ -595,6 +592,7 @@
 }
 @media(max-width:540px){
   .product{
+    
     background-color: white;
     padding: 0 0 0 0;
     display: flex;
@@ -640,11 +638,20 @@
   
   }
   .product-time{
-    margin:0 0 37px 0;
+    margin:0 0 10px 0;
   
   }
   .product-addtocart-btn{
-    display: none;
+    display: flex;
+    width: 250px;
+    height: 50px;
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 0;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: #4A8091;
   }
   .product-phone-block-one{
     display: flex;
@@ -892,10 +899,12 @@
     margin-bottom: 257px;
   }
   .cart-item-list{
-    overflow: auto;
+    overflow: hidden;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    height: fit-content;
     width: 375px; 
   }
   .cart-content-show{
@@ -958,9 +967,9 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-self: center;
+    justify-content: center;
     border-radius: 15px;
-    margin: 0 0 0 0;
+    margin:-40px 0 -40px 0;
   }
   .cart-item-show{
     display: flex;
@@ -1087,7 +1096,11 @@
 .login-form__register_button{
   
 }
-.login-form__register_button{
+
+
+
+
+.__register_button{
   font-weight: bold;
   
 }
@@ -1118,6 +1131,118 @@
 .login_social_image_fb{
   margin: 0 58px 0 75px;
 }
+@media(max-width:540px){
+  .login-form{
+    width: 258px;
+    height: 548px;
+    padding: 36px 23px 36px 23px;
+    margin-top: 93.5px;
+    margin-bottom: 93.5px;
+    background-color: #F2FAFF;
+    border-radius: 15px;
+    box-shadow: 0px 3px 15px #e4e4e4;
+  }
+  .login-form_welcome{
+    margin-bottom: 47px;
+  }
+  .login-form_welcome_word{
+    font-size:18px;
+    font-weight: bolder;
+  }
+  .login-form_account{
+    width: 212px;
+    height: 44px;
+    font-size: 14px;
+    border-radius: 10px;
+    border-color: white;
+    box-shadow: 0px 3px 3px #cecdcd;
+  }
+  .login-form_account>.ant-input{
+    color: #8B9195;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .login-form_password{
+    width: 212px;
+    height: 44px;
+    font-size: 14px;
+    border-radius: 10px;
+    border-color: white;
+    box-shadow: 0px 3px 3px #cecdcd;
+  }
+  .login-form_password>.ant-input{
+    color: #8B9195;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .login-form__remember{
+    font-size:14px;
+    font-weight: bold;
+  }
+  .login-form__forgot{
+    font-size:14px;
+    font-weight: bold;
+    margin: 0 0 0 26px;
+  }
+ 
+  .login-form__login_register{
+    text-align: center;
+  }
+  .login-form__login_button{
+    width:168px;
+    height:38px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 10px;
+    border-color: #63CAD3;
+    background-color: #63CAD3;
+    margin-bottom: 15px;
+  }
+  .login-form__login_button:hover{
+    background-color: #4A8091;
+  }
+  .login-form__register_button{
+    
+  }
+  .login_social{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .login_social_word{
+    color: #707070;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0 0 0;
+  }
+  .login_social_word_or{
+    font-size: 12px;
+    margin: 0 17px 0 17px;
+  }
+  .login_social_or_bar{
+    width: 65px;
+    height: 0.6px;
+    background-color: #707070;
+  }
+  .login_social_image{
+
+  }
+  .login_social_image-size-apple{
+    width: 43px;
+    height: 43px;
+  }
+  .login_social_image-size{ 
+    width: 30px;
+    height: 30px;
+  }
+  .login_social_image_fb{
+    margin: 0 30px 0 39px;
+  }
+}
+
 
 
 .register-form{
@@ -1206,7 +1331,95 @@
   font-size: 15px;
 }
 
-
+@media(max-width:540px){
+  .register-form{
+    width: 258px;
+    height: 465px;
+    padding: 39px 23px 0px 23px;
+    margin-top: 93.5px;
+    margin-bottom: 178.5px;
+    background-color: #F2FAFF;
+    border-radius: 15px;
+    box-shadow: 0px 3px 15px #e4e4e4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .register-form_name{
+    width: 212px;
+    height: 44px;
+    padding: 0 0 0 15px;
+    border-radius: 10px;
+    border-color: white;
+    box-shadow: 0px 3px 3px #cecdcd;
+  }
+  .register-form_name>.ant-input{
+    color: #8B9195;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0 0 0 18px;
+  }
+  .register-form_email{
+    width: 212px;
+    height: 44px;
+    padding: 0 0 0 15px;
+    border-radius: 10px;
+    border-color: white;
+    box-shadow: 0px 3px 3px #cecdcd;
+  }
+  .register-form_email>.ant-input{
+    color: #8B9195;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0 0 0 18px;
+  }
+  .register-form_password{
+    width: 212px;
+    height: 44px;
+    padding: 0 0 0 15px;
+    border-radius: 10px;
+    border-color: white;
+    box-shadow: 0px 3px 3px #cecdcd;
+  }
+  .register-form_password>.ant-input{
+    color: #8B9195;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0 0 0 18px;
+  }
+  .register-form_repassword{
+    width: 212px;
+    height: 44px;
+    padding: 0 0 0 15px;
+    border-radius: 10px;
+    border-color: white;
+    box-shadow: 0px 3px 3px #cecdcd;
+  }
+  .register-form_repassword>.ant-input{
+    color: #8B9195;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0 0 0 18px;
+  }
+  .register-form_checkbox{
+    width: 120px;
+    margin: -30px 0 -50px -60px;
+  }
+  .register-form_checkbox_word{
+    font-size: 10px;
+  }
+  .register-form_haveaccount{
+    color:#8B9195;
+    font-size: 16px;
+    margin-top: 10px;
+    display: none;
+  }
+  .register-form_login{
+    font-size: 12px;
+    margin: -30px 0 0 0;
+  }
+}
 .profile-layout{
   display: flex;
   flex-direction: row;
@@ -1246,7 +1459,8 @@
   margin: 0 27px 0 0;
 }
 .profile-form-label{
-  
+  display: flex;
+  align-items: center;
 }
 .profile-form-label>.ant-form-item-label>label{
   color: #4A8091;
@@ -1260,18 +1474,6 @@
   font-size: 15px;
   padding: 0 20px 0 20px;
   margin: 0 0 0 20px;
-}
-.profile-form-name{
-
-}
-.profile-form-email{
-  
-}
-.profile-form-password{
-  
-}
-.profile-form-repassword{
-  
 }
 .profile-order{
   width: 535px;
@@ -1379,7 +1581,171 @@
 .modify-logout-btn{
   margin: 17px 0 0 0;
 }
+.profile-user-phone-size{
+  display: none;
+}
+@media(max-width:540px){
+  .profile-layout{
+    width: 375px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 85px 0 75px 0;
+  }
+  .profile-form{
+    width: 258px;
+    height: 450px;
+    padding: 20px 0 28px 0;
+    background-color: #F2FAFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 15px;
+    box-shadow: 0px 3px 5px #cecdcd;
+    margin: 20px 0 0 0;
+  }
+  .profile-user{
+    display: none;
+    
+  }
+  .profile-user-welcome-phone-size{
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 0 28px;
+  }
+  .profile-user-icon-phone-size{
+    width: 70px;
+    height: 70px;
+  }
+  .profile-user-upload-icon-phone-size{
+    margin: 45px 0 0 -28px;
+    width: 25px;
+    height: 25px;
+  }
+  .profile-user-phone-size{
+    width: 245px;
+    height: 70px;
+    display: flex;
+  }
+  .profile-form-inputs{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0 0 0 35px;
+  }
+  .profile-form-inputs>.ant-form-item{
+    margin: 0;
+  }
+  .profile-form-label{
+    display: flex;
+    flex-direction: row;
+  }
+  .profile-form-label>.ant-form-item-label>label{
+    color: #4A8091;
+    font-size: 10px;
+    font-weight: bold;
+  }
+  .profile-form-input{
+    width: 148px;
+    height: 29px;
+    border-radius: 10px;
+    font-size: 10px;
+    padding: 0 10px 0 10px;
+    margin: 0 0 0 15px;
+  }
+  .modify-btns{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .modify-form-button{
+    width: 148px;
+    height: 30px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 10px;
+  }
+  .modify-confirm-btn{
+    margin: 30px 0 0 0;
+  }
+  .modify-logout-btn{
+    margin: 11px 0 0 0;
+  }
+  /* 訂單卡還沒 */
+  .order-card{
+    
+  }
+  .profile-order{
+    display: none;
+  }
+  .profile-order-list{
+    
+  }
+  .profile-order-list-item{
+    width: 230px;
+    height: 29px;
+    font-size: 10px;
+    padding:0;
+    margin: 0 0 20px 0;
+  }
+  .profile-order-block{
 
+  }
+  .order-search{
+    width: 258px;
+    height: 59px;
+    background-color: #F2FAFF;
+    border-radius: 15px;
+    border-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 3px 5px #cecdcd;
+    margin-top: 23px;
+  }
+  .order-search-btn{
+    width: 193px;
+    display: flex !important;
+    color: white;
+    font-size: 15px;
+    background-color: #63CAD3;
+    border-radius: 10px;
+    border-width: 0;
+    text-align: center;
+    margin: 13px 0 15px 0;
+  }
+  .order-search-btn>.ant-select-selector{
+    background-color: #63CAD3 !important;
+    border-radius: 10px !important;
+    border-width: 0 !important;
+  }
+  .order-search-btn>.ant-select-selector>span{
+    padding-right:0 !important;
+  }
+  .order-search-btn>.ant-select-arrow{
+    display: none;
+  }
+  .order-search-btn>.ant-select-open{
+
+  }
+  .order-block{
+  
+  }
+  .order-id{
+  
+  }
+  /* 推薦卡還沒 */
+  .recommend-card{
+    display: none;
+  }
+}
 
 
 .checkout-paymentinfo{
@@ -1669,11 +2035,15 @@
   margin: 0 0 68px 0;
 }
 
-
+.order-search-btn{
+  display: none;
+}
 .order-block{
 
 }
+.order-id{
 
+}
 
 .site-form-item-icon{
 
@@ -1829,6 +2199,167 @@
   font-weight: bold;
   background-color: #20B3FF;
   margin: 0 0 65px 0; 
+}
+
+.order-detail{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.order-detail-form{
+  width: 1490px;
+  height: 840px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: #F0FAFF;
+  box-shadow: 0px 3px 3px #cecdcd;
+  border-radius: 15px;
+  border-width: 0;
+  margin: 40px 0 40px 0;
+}
+.order-detail-back-btn{
+  width: 398px;
+  height: 53px;
+  background-color: #20B3FF;
+  border-radius: 10px;
+  border-width: 0;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+.detail-item-text{
+  color: #4A8091;
+  font-size: 25px;
+  font-weight: bold;
+}
+.detail-item-title{
+  color: #4A8091;
+  font-size: 30px;
+  font-weight: bold;
+}
+.detail-item-title-bar{
+   width: 120px;
+   height: 1px;
+   background-color: #BABABA;
+}
+.detail-box1{
+  margin: 55px 0 0 0;
+}
+.drow{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+}
+.invoice-detail-item-value{
+  color: #484848;
+  font-size: 20px;
+  font-weight: bold;
+}
+.payment-detail-item-value{
+  color: #484848;
+  font-size: 25px;
+  font-weight: bold;
+}
+.order-item-name{
+  width: 346px;
+  color: #484848;
+  font-size: 25px;
+  font-weight: bold;
+}
+.order-item-price{
+  color: #484848;
+  font-size: 25px;
+  font-weight: bold;
+  margin: 0 0 0 84px;
+}
+.total-bar{
+  width: 532px;
+  height: 1px;
+  background-color: #BABABA;
+  margin:40px 0 20px 0;
+}
+.total-detail{
+  margin: 0 0 44px 0;
+}
+.order-item-detail-box{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  margin:41px 0 0 0;
+}
+.order-id-box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width:479px;
+  height:45px;
+  font-size: 20px;
+  color: white;
+  background-color: #64CAD3;
+  border-radius: 5px;
+  border-width: 0;
+  margin: 0 0 44px 37px;
+}
+.order-googlepay{
+  margin: 0 0 0 154px;
+}
+.order-product-detail{
+  box-shadow: 0px 3px 3px #cecdcd;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 633px;
+  height: 759px;
+  background-color: white;
+  border-radius: 10px;
+  border-width: 0;
+  margin: 0 0 0 75px;
+  padding: 30px 0 0 40px;
+}
+.buy-detail{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 0 0 50px;
+  width: 621px;
+  height: 395px;
+  background-color: white;
+  border-radius: 10px;
+  border-width: 0;
+  box-shadow: 0px 3px 3px #cecdcd;
+}
+.invoice-detail{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 0 0 50px;
+  width: 621px;
+  height: 309px;
+  background-color: white;
+  border-radius: 10px;
+  border-width: 0;
+  margin: 40px 0 0 0;
+  box-shadow: 0px 3px 3px #cecdcd;
+}
+.textleft{
+  text-align: left;
+}
+
+
+.create-not-login{
+  font-size: 30px;
+  color: #4A8091;
+  font-weight: bold;
+  height:800px;
+  margin-top: 120px;
 }
 
 

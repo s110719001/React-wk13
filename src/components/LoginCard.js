@@ -79,6 +79,7 @@ const LoginCard = ({ redirect }) => {
       <Form.Item>
         <Form.Item
           name="remember"
+          className="remember-forgot"
           noStyle
         >
           <Checkbox onChange={onChange} className="login-form__remember text-color-main" checked={remember}>記住帳號密碼</Checkbox>
@@ -108,9 +109,9 @@ const LoginCard = ({ redirect }) => {
                 <div className="login_social_or_bar"></div>
               </div>
               <div className="login_social_image">
-                <img src="image/social/google.png"/>
-                <img className="login_social_image_fb" src="image/social/facebook.png"/>
-                <img src="image/social/apple.png"/>
+                <img className="login_social_image-size" src="image/social/google.png"/>
+                <img className="login_social_image_fb login_social_image-size" src="image/social/facebook.png"/>
+                <img className="login_social_image-size-apple" src="image/social/apple.png"/>
               </div>
             </div>
           </>
@@ -129,6 +130,7 @@ const LoginCard = ({ redirect }) => {
               <p className="login-form__error-message">{error}</p>
             </div>
           </div>
+
         )}
       </Form.Item>
       
