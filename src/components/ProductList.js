@@ -9,6 +9,7 @@ import BookLoading from "../components/BookLoading"
 export default function ProductList() {
   const { state: { page: { products }, requestProducts: { loading } } } = useContext(StoreContext);
 
+
   return (
     <>
     {loading

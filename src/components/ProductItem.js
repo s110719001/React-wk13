@@ -30,7 +30,7 @@ export default function ProductItem({ product }){
                         </p>
                         <div className="productlist-rating">
                             <img
-                            style={{width:'178px',height:'29px'}}
+                            className="productlist-rating-icon"
                             src="/image/rating.png"
                             />
                             <p className="productlist-rating-comments">{product.comments}個評價</p>

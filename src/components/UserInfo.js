@@ -26,16 +26,13 @@ export default function UserInfo(props) {
             {userInfo
                ? <img className="header-profile-icon" src="image/header/profile.png" />
                : <Button className="header-btn-login header-btn-login text-white">
-                     
-                     <img
-                        className="header-phone-burger-btn"
-                        src="/image/header/burger.png"
-                     />
                      <div className="header-btn-name">登入</div>
-                     
                   </Button>
-
             }
+            <img
+               className="header-phone-burger-btn"
+               src="/image/header/burger.png"
+            />
             {/* <p className="cart-summary-text">
                {userInfo
                   ? `${userInfo.displayName}'s`

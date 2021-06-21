@@ -114,22 +114,23 @@ const ProfileCard = () => {
           </Form.Item>
         </div>
         <Form.Item>
+          <div className="modify-btns">
           <Button
-            type="primary"
+            style={{backgroundColor:"#15B5FF"}}
             htmlType="submit"
-            className="login-form__button"
+            className="modify-form-button modify-confirm-btn"
           >
             送出新資料
           </Button>
 
           <Button
-            type="danger"
-            style={{ marginTop: "0.8rem" }}
-            className="login-form__button"
+            style={{backgroundColor:"#E26565"}}
+            className="modify-form-button modify-logout-btn"
             onClick={handleLogout}
           >
             登出
           </Button>
+          </div>
         </Form.Item>
       </Form>
       

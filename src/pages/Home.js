@@ -24,7 +24,7 @@ export default function Home(){
                 <AppHeader></AppHeader>
             </Header>
             <Content className="layout-content">
-                <div className="block search">
+                <div className="block">
                     <SearchBlock></SearchBlock>
                 </div>
                 <div className="block">
