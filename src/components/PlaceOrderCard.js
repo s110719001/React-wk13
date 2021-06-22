@@ -36,66 +36,106 @@ export default function PlaceOrderCard() {
 
   return (
     <>
+      <div className="checkout">
+        <div className="checkout-process process-order-first">
+            <div className="process-order text-color-main bg-second">1</div>
+            <div className="process-name text-color-main">商品資訊</div>
+        </div>
+        <div className="checkout-process">
+            <div className="process-order text-color-main bg-second">2</div>
+            <div className="process-name text-color-main">付款資訊</div>
+        </div>
+        <div className="checkout-process">
+            <div className="process-order text-white bg-main">3</div>
+            <div className="process-name text-color-main">完成結帳</div>
+        </div>
+      </div>
+      <div className="cart-bar bg-main"></div>
       {loading
         ? (
           <BookLoading/>
         ) : (
-          <Row gutter={[24, 24]}>
-            <Col
-              xs={{ span: 20, offset: 2 }}
-              lg={{ span: 13, offset: 2 }}
-            >
-              <div className="card card-body">
-                <h2 style={{ color: 'black' }}>購買明細</h2>
-                <p>
-                  <strong>Email:</strong> {cart.shippingAddress.email} <br />
-                  <strong>姓名:</strong> {cart.shippingAddress.name} <br />
-                  <strong>住址: </strong> {cart.shippingAddress.address}
-                </p>
-              </div>
-              <div className="card card-body">
-                <h2 style={{ color: 'black' }}>付款方式</h2>
-                <p>
-                  <strong></strong> {cart.shippingAddress.PaymentMethod}
-                  <strong></strong> {cart.shippingAddress.InvoiceMethod}
-                  <strong></strong> {cart.shippingAddress.taxid}
-                </p>
-              </div>
-              <div className="card card-body">
-                <h2 style={{ color: 'black' }}>商品資訊</h2>
-                {cartItems.length === 0 ? (
-                  <div>Cart is empty</div>
-                ) : (
-                  cartItems.map(item => (
-                    <li key={item.id} className="cart-item">
-                      <div className="cart-item-content">
-                        <div className="cart-name">{item.name}</div>
-                      </div>
-                      <div className="cart-item-end">
-                        <div className="cart-price">
-                          ${item.price}
-                        </div>
-                      </div>
+          <>
+              <div className="order-detail-form">
+                  <div
+                     
+                  >
+                     <div className="buy-detail">
+                        <div className="buy-detail-title detail-item-title">購買明細</div>
+                        <div className=" detail-item-title-bar"></div>
+                        <p>
+                            <p className="detail-item-text detail-box1">Email: {cart.shippingAddress.email}</p> 
+                           <p className="detail-item-text detail-box1">姓名: {cart.shippingAddress.name}</p> 
+                           <p className="detail-item-text detail-box1">住址: {cart.shippingAddress.address}</p> 
+                        </p>
+                     </div>
+                     <div className="invoice-detail">
+                        <div className="invoice-detail-title detail-item-title">發票資料</div>
+                        <div className=" detail-item-title-bar"></div>
+                        <p className=" drow">
+                            <p className="invoice-detail-item detail-item-text"  style={{marginTop:"10px"}}>
+                                手機載具
+                            </p>
+                            <p className="invoice-detail-item-value" style={{marginLeft:"30px"}}>
+                                {cart.shippingAddress.InvoiceMethod}
+                            </p>
+                        </p>
+                        <h2 className="invoice-detail-item detail-item-title">付款方式</h2>
+                        <p className="payment-detail-item-value">
+                            {cart.shippingAddress.PaymentMethod}
+                        </p>
+                     </div>
+                  </div>
+                  <div
+                     xs={{ span: 20, offset: 2 }}
+                     lg={{ span: 7, offset: 0 }}
+                  >
+                     <div className="order-product-detail">
+                        <div className="textleft detail-item-title">商品資訊</div>
+                        <div className=" detail-item-title-bar"></div>
+                        <div className="order-item-detail-box">
+                            {cartItems.length === 0 ? (
+                            <div>Cart is empty</div>
+                            ) : (
+                              cartItems.map(item => (
+                                <li key={item.id} className="order-item-list drow">
+                                    <div className="order-item-name">{item.title}</div>
+                                    <div className="order-item-end">
+                                        <div className="order-item-price">
+                                        ${item.price}
+                                        </div>
+                                    </div>
 
-                    </li>
-                  ))
-                )}
-                <div className="cart-total-price-wrap">
-                  Total
-            <div className="cart-total-price">${getTotalPrice()}</div>
-                </div>
-              </div>
+                                </li>
+                            ))
+                            )}
+                            <div className="total-bar"></div>
+                            <div className="total-detail">
+                            <div>
+                                <strong>總共 {cart.cartItems.length} 堂</strong>
+                            </div>
+                            <div>
+                                <strong>共 {getTotalPrice()} 元</strong>
+                            </div>
+                            </div>
+                        </div>
+                        <div className="order-id-box">
+                        添購更多課程
+                        </div>
+                     </div>
+
+                  </div>
+               </div>
+              
               <Button
-                  className="primary-btn"
+                  className="placeorder-btn"
                   block
                   type="primary"
                   onClick={placeOrderHandler}
                 >
                   確認並送出
                 </Button>
-            </Col>
-            
-          </Row>
+                </>
         )
       }
     </>

@@ -2453,3 +2453,79 @@
 .text-white{
   color:white;
 }
+
+.carousel-phone{
+  width:500px !important;
+  height:700px;
+}
+.carousel-phone-layout{
+  width:800px;
+  height:700px;
+  display: none;
+}
+.carousel-phone-card{
+  width: 280px;
+  height: 450px;
+  border-radius: 20px;
+  background-color: #F9FDFF;
+}
+.carousel-phone-title{
+  font-size: 14px;
+  margin:0 0 8.5px 0;
+}
+.carousel-phone-price{
+  margin:0 0 8.5px 0;
+}
+.carousel-phone-lecturer{
+  margin:0 0 8.5px 0;
+}
+.carousel-phone-student{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+  margin:0 0 8.5px 0;
+}
+.carousel-phone-person-icon{
+  width: 15px;
+  height: 15px;
+  margin: 0 5px 0 0;
+}
+.carousel-phone-rating{
+  display: flex;
+  flex-direction: row;
+  margin: 0 0 12.5px 0;
+}
+.carousel-phone-rating-icon{
+  width: 83px;
+  height: 17px;
+}
+.carousel-phone-rating-comments{
+  font-size: 14px;
+  margin: 0 0 0 85px;
+}
+.carousel-phone-bar{
+  width: 217.25px;
+  height: 1px;
+  background-color: #707070;
+  margin: 0 0 12.5px 0;
+}
+.carousel-phone-btn{
+  width: 161px;
+  height: 28px;
+}
+.placeorder-btn{
+  width: 398px;
+  height: 53px;
+  border-radius: 10px;
+  border-width: 0;
+  font-size: 25px;
+  font-weight: bold;
+  background-color: #20B3FF;
+  margin: 0 0 30px 0;
+}
+@media(max-width:540px){
+  .carousel-phone-layout{
+    display: flex;
+  }
+}
