@@ -8,7 +8,7 @@
         "stars":"2",
         "comments":"3",
         "avaliable":"1",
-
+        "id":"1",
         "class_cover":"/image/products/class1/cover.png",
         "class_name":"抹茶控的第一堂課 | 十款職人級抹茶甜點在家輕鬆上桌",
         "class_price":"NT 2,680",
@@ -42,7 +42,7 @@
         "stars":"2",
         "comments":"3",
         "avaliable":"1",
-
+        "id":"2",
         "class_cover":"/image/products/class2/cover.png",
         "class_name":"手沖咖啡學｜搞懂原理，成為咖啡職人",
         "class_price":"NT 1,880",
@@ -76,7 +76,7 @@
         "stars":"2",
         "comments":"3",
         "avaliable":"1",
-
+        "id":"3",
         "class_cover":"/image/products/class3/cover.png",
         "class_name":"藍諾導演的Premiere剪輯心法- 18個單元帶你剪出高質感",
         "class_price":"NT 1,680",
@@ -106,7 +106,8 @@
         "student":"6",
         "stars":"2",
         "comments":"3",
-        "avaliable":"1"
+        "avaliable":"1",
+        "id":"4"
     },
     {
         "image":"/image/class2.png",
@@ -116,7 +117,8 @@
         "student":"6",
         "stars":"2",
         "comments":"3",
-        "avaliable":"1"
+        "avaliable":"1",
+        "id":"5"
     },
     {
         "image":"/image/class3.png",
@@ -126,6 +128,7 @@
         "student":"6",
         "stars":"2",
         "comments":"3",
-        "avaliable":"1"
+        "avaliable":"1",
+        "id":"6"
     }
 ]

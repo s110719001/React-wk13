@@ -1,5 +1,5 @@
 import { createContext } from "react";
-
+import products from "../json/products.json";
 import useReducerWithThunk from 'use-reducer-thunk';
 import {
     SET_PAGE_TITLE,
@@ -81,7 +81,7 @@ const initialState = {
     allProducts: [],
     page: {
        title: "",
-       products: [],
+       products: products,
     },
     productDetail: {
         product: {},
